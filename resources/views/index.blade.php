@@ -68,7 +68,7 @@ p{
 .years{
   width: 25%;
 }
-.area{
+.area,.languages{
   width:30%;
 }
 .areas input{

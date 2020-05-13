@@ -9,11 +9,10 @@
     {{ Form::submit('検索',['class'=>'btn btn-outline-primary']) }}
   </div>
   {{ Form::close() }}
+</div>
   <style >
     .form-control{
       width:20%;
       height:2.5vh;
     }
   </style>
-
-</div>
