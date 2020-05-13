@@ -70,6 +70,7 @@ p{
       <a href={{ route('shop.new') }} class="btn btn-outline-primary mb-4 mt-2">add your info</a>
     </div>
   @endauth
+  @include('search')
   <div class="infos">
     @foreach($shops as $shop)
       <div class="content">

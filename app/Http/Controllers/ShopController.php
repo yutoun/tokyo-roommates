@@ -18,6 +18,11 @@ class ShopController extends Controller
      */
     public function index()
     {
+        // if($request==filled('keyword')){
+        //   $keyword=$request('keyword');
+        // }else{
+        //
+        // }
         $shops = Shop::all();
         return view('index',['shops'=>$shops]);
     }
@@ -106,7 +111,7 @@ class ShopController extends Controller
     {
       $shop = Shop::find($id);
 
-      $shop->name = request('name');
+      $shop->name = request('name');//request->input()tと同意技
       $shop->years = request('years');
       $shop->adress = request('adress');
       $shop->language = request('language');
