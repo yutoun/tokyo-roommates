@@ -1,7 +1,7 @@
 {{ Form::open(['method'=>'get']) }}
 {{ csrf_field()}}
 <div class="form-group">
-  {{ Form::label('keyword','keyword:') }}
+  {{ Form::label('keyword','area:') }}
   {{ Form::text('keyword',null,['class'=>'form-control']) }}
 </div>
 <div class="form-group">
@@ -9,3 +9,9 @@
   <a href={{ route('shop.list') }}>クリア</a>
 </div>
 {{ Form::close() }}
+<style >
+  .form-control{
+    width:20%;
+    height:2.5vh;
+  }
+</style>

@@ -16,15 +16,23 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // if($request==filled('keyword')){
-        //   $keyword=$request('keyword');
-        // }else{
-        //
-        // }
-        $shops = Shop::all();
-        return view('index',['shops'=>$shops]);
+        if($request==filled('keyword')){
+          $keyword=$request->input('keyword');
+          $shops = Shop::where('adress','like','%'.$keyword.'%')->get();
+        }else{
+          $shops = Shop::all();
+        }
+        if($request==filled('gender')){
+          $gender=$request->input('gender');
+          $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
+          $categories=Category::all()->pluck('name','id');
+        }else{
+          $shops = Shop::all();
+        }
+
+        return view('index',['shops'=>$shops,'categories'=>$categories]);
     }
 
     /**
