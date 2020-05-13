@@ -18,18 +18,20 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        if($request==filled('keyword')){
+        if($request==filled('age')){
+          $age=$request->input('age');
+          $shops = Shop::where('years','like','%'.$age.'%')->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ。一番最初のみ適用されてる
+          $categories=Category::all()->pluck('name','id');
+        }elseif($request==filled('keyword')){
           $keyword=$request->input('keyword');
           $shops = Shop::where('adress','like','%'.$keyword.'%')->get();
-        }else{
-          $shops = Shop::all();
-        }
-        if($request==filled('gender')){
+          $categories=Category::all()->pluck('name','id');
+        }elseif($request==filled('gender')){
           $gender=$request->input('gender');
           $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }else{
-          $shops = Shop::all();
+          return;
         }
 
         return view('index',['shops'=>$shops,'categories'=>$categories]);

@@ -1,13 +1,12 @@
-<div class="area">
+<div class="years">
   {{ Form::open(['method'=>'get']) }}
   {{ csrf_field()}}
-  <div class="form-group areas">
-    {{ Form::label('keyword','area:') }}
-    {{ Form::text('keyword',null,['class'=>'form-control']) }}
+  <div class="form-group">
+    {{ Form::label('age','age:') }}
+    {{ Form::text('age',null,['class'=>'form-control']) }}
   </div>
   <div class="form-group">
     {{ Form::submit('検索',['class'=>'btn btn-outline-primary']) }}
-    <a href={{ route('shop.list') }}>クリア</a>
   </div>
   {{ Form::close() }}
   <style >

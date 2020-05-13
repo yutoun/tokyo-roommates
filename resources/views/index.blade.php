@@ -62,6 +62,31 @@ p{
 .name{
   width:7vh;
 }
+.gender{
+  width: 30%;
+}
+.years{
+  width: 25%;
+}
+.area{
+  width:30%;
+}
+.areas input{
+  width:17vh;
+}
+.area .areas{
+  display: flex;
+}
+.gender{
+  margin-left: 11vh;
+  /* margin-top:2vh; */
+}
+.years .form-group{
+  display: flex;
+}
+.search{
+  display: flex;
+}
 </style>
 
 <div class="body">
@@ -70,8 +95,11 @@ p{
       <a href={{ route('shop.new') }} class="btn btn-outline-primary mb-4 mt-2">add your info</a>
     </div>
   @endauth
-  @include('searchgender')
-  @include('searcharea')
+  <div class="search">
+    @include('searchgender')
+    @include('searchYear')
+    @include('searcharea')
+  </div>
   <div class="infos">
     @foreach($shops as $shop)
       <div class="content">
