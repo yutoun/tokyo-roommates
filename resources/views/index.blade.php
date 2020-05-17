@@ -72,19 +72,28 @@ p{
   width:30%;
 }
 .areas input{
-  width:17vh;
+  width:40%;
+}
+.lan input{
+  width: 40%;
 }
 .area .areas{
   display: flex;
 }
 .gender{
-  margin-left: 11vh;
+  margin-left: 6vh;
   /* margin-top:2vh; */
 }
 .years .form-group{
   display: flex;
 }
 .search{
+  display: flex;
+}
+.languages{
+
+}
+.lan{
   display: flex;
 }
 </style>
