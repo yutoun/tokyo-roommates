@@ -11,4 +11,5 @@
     {{ Form::submit('検索',['class'=>'btn btn-outline-primary']) }}
   </div>
   {{ Form::close() }}
+  ああ
 </div>
