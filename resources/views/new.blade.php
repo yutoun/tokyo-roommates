@@ -3,33 +3,45 @@
   <h1 class="pt-5 mb-4">Your Information</h1>
   {{Form::open(['route'=>'shop.store',"enctype"=>"multipart/form-data"]) }}
     <div class="form-group">
-      {{ Form::label('adress','the city you wanna live:',['class'=>'newinfotitle']) }}
+      {{ Form::label('adress','*the city you wanna live:',['class'=>'newinfotitle']) }}
       {{ Form::text('adress',null,['class'=>'info-city']) }}
     </div>
     <div class="form-group">
-      {{ Form::label('category_id','gender:',['class'=>'newinfotitle']) }}
+      {{ Form::label('category_id','*gender:',['class'=>'newinfotitle']) }}
       {{ Form::select('category_id',$categories,['class'=>'info']) }}
       <!-- $categoriesには(name,id)が入っていて、引数１が表示されるもの、引数２がvalueになるようになっている。だからcategory_idには$categoriesのidが送られる -->
     </div>
+    <?php
+    $arr=[];
+    for ($i=0; $i<100; $i++) {
+      $arr[]=$i;
+    }
+    ?>
     <div class="form-group">
-      {{ Form::label('years','age:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
-      {{ Form::text('years',null,['class'=>'info-years']) }}
+      {{ Form::label('years','*age:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::select('years',[$arr],['class'=>'info-years']) }}
     </div>
     <div class="form-group">
-      {{ Form::label('language','languages:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::label('room','*with room or not:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::select('room',['with room' => 'with room',
+   'without room' => 'without room'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
+
+    </div>
+    <div class="form-group">
+      {{ Form::label('language','*languages:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::text('language',null,['class'=>'info-language']) }}
       (less than 2 languages)
     </div>
     <div class="form-group">
-      {{ Form::label('name','title:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::label('name','*title:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::text('name',null,['class'=>'info']) }}
     </div>
     <div class="form-group">
-      {{ Form::label('content','content:',['class'=>'newinfotitle content-top']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::label('content','*content:',['class'=>'newinfotitle content-top']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::textarea('content',null,['class'=>'info']) }}
     </div>
     <div class="form-group">
-      {{ Form::label('photo','photo:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::label('photo','*photo:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::file('photo',null,['class'=>'info-language']) }}
     </div>
     <div class="form-group">

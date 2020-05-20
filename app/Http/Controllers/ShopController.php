@@ -24,7 +24,11 @@ class ShopController extends Controller
           $categories=Category::all()->pluck('name','id');
         }elseif($request->filled('age')){
           $age=$request->input('age');
-          $shops = Shop::where('years','like','%'.$age.'%')->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
+          $shops = Shop::where('years','like',$age)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
+          $categories=Category::all()->pluck('name','id');
+        }elseif($request->filled('room')){
+          $room=$request->input('room');
+          $shops = Shop::where('room','like',$room)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
           $categories=Category::all()->pluck('name','id');
         }elseif($request->filled('languages')){
           $languages=$request->input('languages');
@@ -70,17 +74,23 @@ class ShopController extends Controller
         $shop->language = request('language');
         $shop->content = request('content');
         $shop->category_id  = request('category_id');
+        $shop->room  = request('room');
         $shop->user_id = $user->id;//ログインしているユーザーのidを入れる。これまではidを指定してそのidのメンバーの名前を出していた
 
-        // dd($request->file('photo'));
-        // dd($request->all());
-        $file_name = $request->file('photo')->getClientOriginalName();
-        $shop->picname = $file_name;
-        // 上のddで見てみるとgetclient~~でファイル名が記載されてることがわかる。filenameにファイル名を入れてその名前で名前をつけて保存する
-        $request->file('photo')->storeAs('',$file_name);
-        // $request->file('photo')->storeAs('',request('name'));
-        $shop->save();
-        return redirect()->route('shop.detail',['id' => $shop->id]);// showに遷移するときはもちろん毎回idを渡す必要があるindex.phpの中のコードも同じ
+        if($request->file('photo')==null){
+          $shop->picname = '';
+          $shop->save();
+          return redirect()->route('shop.detail',['id' => $shop->id]);// showに遷移するときはもちろん毎回idを渡す必要があるindex.phpの中のコードも同じ
+        }else{
+          $file_name = $request->file('photo')->getClientOriginalName();
+          $shop->picname = $file_name;
+          // 上のddで見てみるとgetclient~~でファイル名が記載されてることがわかる。filenameにファイル名を入れてその名前で名前をつけて保存する
+          $request->file('photo')->storeAs('',$file_name);
+          // $request->file('photo')->storeAs('',request('name'));
+          $shop->save();
+          return redirect()->route('shop.detail',['id' => $shop->id]);// showに遷移するときはもちろん毎回idを渡す必要があるindex.phpの中のコードも同じ
+        }
+
     }
 
     /**
@@ -132,14 +142,19 @@ class ShopController extends Controller
       $shop->language = request('language');
       $shop->content = request('content');
       $shop->category_id  = request('category_id');
+      $shop->room  = request('room');
 
-      // dd($request->all());
-      $file_name = $request->file('photo')->getClientOriginalName();
-      $shop->picname = $file_name;
-      // 上のddで見てみるとgetclient~~でファイル名が記載されてることがわかる。filenameにファイル名を入れてその名前で名前をつけて保存する
-      $request->file('photo')->storeAs('',$file_name);
-      $shop->save();
-      return redirect()->route('shop.detail',['id' => $shop->id]);
+      if($request->file('photo')==null){
+        $shop->save();
+        return redirect()->route('shop.detail',['id' => $shop->id]);
+      }else{
+        $file_name = $request->file('photo')->getClientOriginalName();
+        $shop->picname = $file_name;
+        // 上のddで見てみるとgetclient~~でファイル名が記載されてることがわかる。filenameにファイル名を入れてその名前で名前をつけて保存する
+        $request->file('photo')->storeAs('',$file_name);
+        $shop->save();
+        return redirect()->route('shop.detail',['id' => $shop->id]);
+      }
     }
 
     /**

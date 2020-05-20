@@ -18,7 +18,7 @@
   margin-bottom: 5vh;
 }
 .content{
-  height:16vh;
+  height:26vh;
   border-bottom:1px solid #ebebeb;
   display: flex;
 }
@@ -36,10 +36,11 @@ p{
 }
 .right{
   display: inline;
-  width:68vh;
+  width:100%;
 }
 .right-center{
   width: 100%;
+  height: 45%;
 }
 .right-top{
   margin-top: 1vh;
@@ -55,18 +56,18 @@ p{
   padding:0 !important;
   margin-left: 1vh;
   position: absolute;
-  right:10px;
+  right:5px;
   margin-right: 1vh;
 }
 
 .name{
-  width:7vh;
+  width:10vh;
 }
 .gender{
   width: 30%;
 }
 .years{
-  width: 25%;
+  width: 30%;
 }
 .area,.languages{
   width:30%;
@@ -101,10 +102,10 @@ p{
 <div class="body">
   @auth<!-- これはログインという行動をもし完了していたら表示する物。authifとは違う -->
     <div class="newbtn">
-      <a href={{ route('shop.new') }} class="btn btn-outline-primary mb-4 mt-2">add your info</a>
+      <a href={{ route('shop.new') }} class="btn btn-outline-primary mt-2">add your info</a>
     </div>
   @endauth
-  <div class="search">
+  <div class="search mt-5">
     @include('searchgender')
     @include('searchYear')
     @include('searcharea')
@@ -122,8 +123,7 @@ p{
           </div>
           <div class="right-center">
             <p>
-              <?php echo substr( $shop->content  ,0,65); ?><br>
-              <?php echo substr( $shop->content  ,65,60); ?>
+              <?php echo substr($shop->content,0,130) ?>
               <a href={{ route('shop.detail',['id'=>$shop->id]) }} style="color:black; font-family:solid;">...</a>
             </p>
           </div>
@@ -132,6 +132,7 @@ p{
             <p class="border text-light rounded bg-success category_name">{{ $shop->category->name }}</p> <!-- shop.phpのカテゴリーメソッドにいく -->
             <p class="border text-light rounded bg-success">{{ $shop->years }}</p>
             <p class="border text-light rounded bg-success">{{ $shop->language }}</p>
+            <p class="border text-light rounded bg-success">{{ $shop->room }}</p>
             <p class="border-bottom border-dark time">{{ $shop->created_at }}</p>
           </div>
         </div>
