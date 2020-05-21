@@ -8,8 +8,8 @@
     // var_dump($arr);
   }
   ?>
-  
 
+  
   <div class="form-group">
     {{ Form::label('room','room:') }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
     {{ Form::select('room',[''=>null,'with room' => 'with room',
