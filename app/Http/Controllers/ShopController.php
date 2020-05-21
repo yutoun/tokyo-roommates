@@ -42,7 +42,8 @@ class ShopController extends Controller
         $gender=$request->input('gender');
         $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
         $categories=Category::all()->pluck('name','id');
-      }else{
+      }
+      if($request->filled('')){
         $shops = Shop::all();
         $categories=Category::all()->pluck('name','id');
       }
