@@ -18,28 +18,30 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-      if($request->filled('area')){
-          $area=$request->input('area');
+      $area=$request->input('area');
+      $age=$request->input('age');
+      $room=$request->input('room');
+      $languages=$request->input('languages');
+      $gender=$request->input('gender');
+
+      if(!empty($area)){
           $shops = Shop::where('adress','like','%'.$area.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
-        if($request->filled('age')){
-          $age=$request->input('age');
+        if(!empty($age)){
           $shops = Shop::where('years','like',$age)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
           $categories=Category::all()->pluck('name','id');
         }
-        if($request->filled('room')){
-          $room=$request->input('room');
+        if(!empty($room)){
           $shops = Shop::where('room','like',$room)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
           $categories=Category::all()->pluck('name','id');
         }
-        if($request->filled('languages')){
-          $languages=$request->input('languages');
+        if(!empty($languages)){
           $shops = Shop::where('language','like','%'.$languages.'%')->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
           $categories=Category::all()->pluck('name','id');
         }
-        if($request->filled('gender')){
-          $gender=$request->input('gender');
+        if(!empty($gender)){
+
           $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
