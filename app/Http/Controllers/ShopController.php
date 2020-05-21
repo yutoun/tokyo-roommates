@@ -18,32 +18,36 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->filled('area')){
-          $area=$request->input('area');
-          $shops = Shop::where('adress','like','%'.$area.'%')->get();
-          $categories=Category::all()->pluck('name','id');
-        }elseif($request->filled('age')){
-          $age=$request->input('age');
-          $shops = Shop::where('years','like',$age)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
-          $categories=Category::all()->pluck('name','id');
-        }elseif($request->filled('room')){
-          $room=$request->input('room');
-          $shops = Shop::where('room','like',$room)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
-          $categories=Category::all()->pluck('name','id');
-        }elseif($request->filled('languages')){
-          $languages=$request->input('languages');
-          $shops = Shop::where('language','like','%'.$languages.'%')->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
-          $categories=Category::all()->pluck('name','id');
-        }elseif($request->filled('gender')){
-          $gender=$request->input('gender');
-          $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
-          $categories=Category::all()->pluck('name','id');
-        }else{
-          $shops = Shop::all();
-          $categories=Category::all()->pluck('name','id');
-        }
+      if($request->filled('area')){
+        $area=$request->input('area');
+        $shops = Shop::where('adress','like','%'.$area.'%')->get();
+        $categories=Category::all()->pluck('name','id');
+      }
+      if($request->filled('age')){
+        $age=$request->input('age');
+        $shops = Shop::where('years','like',$age)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
+        $categories=Category::all()->pluck('name','id');
+      }
+      if($request->filled('room')){
+        $room=$request->input('room');
+        $shops = Shop::where('room','like',$room)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
+        $categories=Category::all()->pluck('name','id');
+      }
+      if($request->filled('languages')){
+        $languages=$request->input('languages');
+        $shops = Shop::where('language','like','%'.$languages.'%')->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
+        $categories=Category::all()->pluck('name','id');
+      }
+      if($request->filled('gender')){
+        $gender=$request->input('gender');
+        $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
+        $categories=Category::all()->pluck('name','id');
+      }else{
+        $shops = Shop::all();
+        $categories=Category::all()->pluck('name','id');
+      }
 
-        return view('index',['shops'=>$shops,'categories'=>$categories]);
+      return view('index',['shops'=>$shops,'categories'=>$categories]);
     }
 
     /**
