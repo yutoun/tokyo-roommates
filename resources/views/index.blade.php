@@ -106,9 +106,7 @@ p{
     </div>
   @endauth
   <div class="search mt-5">
-    @include('searchgender')
-    @include('searchYear')
-    @include('searcharea')
+    @include('searchGender')
   </div>
   <div class="results">
     <p class="border text-light rounded bg-success">{{$request->room}}</p>
