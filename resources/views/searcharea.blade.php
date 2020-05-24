@@ -183,7 +183,7 @@
     }
 }
 </style>
-<script type="text/javascript">
+<script type="text/javascript" defer>
 $(function(){
 //.accordion_oneの中の.accordion_headerがクリックされたら
 $('.s_01 .accordion_one .accordion_header').click(function(){
