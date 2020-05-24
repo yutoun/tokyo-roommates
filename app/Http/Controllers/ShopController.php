@@ -19,7 +19,7 @@ class ShopController extends Controller
     public function index(Request $request)
     {
 
-      $query = Shop::query();
+      // $query = Shop::query();
       $area=$request->input('area');
       $age=$request->input('age');
       $room=$request->input('room');
