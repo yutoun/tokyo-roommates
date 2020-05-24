@@ -18,6 +18,8 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
+
+      $query = Shop::query();
       $area=$request->input('area');
       $age=$request->input('age');
       $room=$request->input('room');
@@ -33,11 +35,11 @@ class ShopController extends Controller
           $shops = Shop::where('characters','like','%'.$area.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
-
       if(!empty($area)){
           $shops = Shop::where('adress','like','%'.$area.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
+
         if(!empty($age)){
           $shops = Shop::where('years','like',$age)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
           $categories=Category::all()->pluck('name','id');
