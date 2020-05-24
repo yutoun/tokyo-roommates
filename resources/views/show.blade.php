@@ -1,17 +1,20 @@
 @extends('layout')
 @section('content')
-    <h1 class="pt-5">{{ $shop->name }}</h1>
-    <div class="show-titleContent mb-8">
+    <h1 class="pt-5">{{ $shop->user->name }}</h1>
+    <div class="show-titleContent mb-3">
       <img src="/storage/<?php echo $shop->picname; ?>" class="img">
       <div class="show-title">
         <!-- <p>pic:</p> -->
-        <p class="name">Name:</p>
+        <p class="name">username:</p>
         <p>created_at:</p>
         <p>Adress:</p>
         <p>Gender: </p>
         <p>age:</p>
         <p>room:</p>
         <p>langage:</p>
+        <p>character:</p>
+        <p>job:</p>
+        <p>activetime:</p>
         <p>content:</p>
 
 
@@ -24,6 +27,9 @@
         <p>{{ $shop->years }}</p>
         <p>{{ $shop->room }}</p>
         <p>{{ $shop->language }}</p>
+        <p>{{ $shop->characters}}</p>
+        <p>{{ $shop->job}}</p>
+        <p>{{ $shop->activetime}}</p>
         <p>{{ $shop->content }}</p>
 
       </div>
@@ -40,8 +46,9 @@
             {{ Form::close() }}</span>
           <!-- htmlがデリートメソッド対応してないからformでやるしかない -->
           <a class="home btn btn-success" href={{ route('shop.list') }}>HOME</a>
-        </div>
+          <a class="btn btn-primary fab fab-facebook" href={{ $shop->fb }}><i class="fa fa-facebook fa-lg"></i></a>
 
+        </div>
       @endif
     @endauth
 @endsection
@@ -54,7 +61,7 @@
     margin-right: 5vh;
   }
   .img{
-    height: 33vh;
+    height: 30em;
     width: 46%;
     margin-right: 5vh;
   }
@@ -64,5 +71,8 @@
   .buttonbig{
     /* margin: 0 auto; */
     margin-left: 40%;
+  }
+  .fa-lg {
+    font-size: 1.8em !important;
   }
 </style>

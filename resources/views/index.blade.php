@@ -110,6 +110,12 @@ p{
     @include('searchYear')
     @include('searcharea')
   </div>
+  <div class="results">
+    <p class="border text-light rounded bg-success">{{$request->room}}</p>
+    <p class="border text-light rounded bg-success">{{$request->languages}}</p>
+    <p class="border text-light rounded bg-success">{{$request->area}}</p>
+  </div>
+
   <div class="infos">
     @foreach($shops as $shop)
       <div class="content">
@@ -134,6 +140,7 @@ p{
             <p class="border text-light rounded bg-success">{{ $shop->language }}</p>
             <p class="border text-light rounded bg-success">{{ $shop->room }}</p>
             <p class="border-bottom border-dark time">{{ $shop->created_at }}</p>
+
           </div>
         </div>
 

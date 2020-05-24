@@ -7,6 +7,10 @@
       {{ Form::text('adress',null,['class'=>'info-city']) }}
     </div>
     <div class="form-group">
+      {{ Form::label('fb','*your FB url:',['class'=>'newinfotitle']) }}
+      {{ Form::text('fb',null,['class'=>'info-city']) }}
+    </div>
+    <div class="form-group">
       {{ Form::label('category_id','gender:',['class'=>'newinfotitle']) }}
       {{ Form::select('category_id',$categories,['class'=>'info']) }}
       <!-- $categoriesには(name,id)が入っていて、引数１が表示されるもの、引数２がvalueになるようになっている。だからcategory_idには$categoriesのidが送られる -->
@@ -25,6 +29,23 @@
       {{ Form::label('room','with room or not:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::select('room',['with room' => 'with room',
    'without room' => 'without room'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
+    </div>
+    <div class="form-group">
+      {{ Form::label('characters','*character:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::select('characters',['partyppl' => 'party ppl',
+   'quiet' => 'quiet','normal'=>'normal'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
+
+    </div>
+    <div class="form-group">
+      {{ Form::label('job','*job:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::select('job',['negotiator' => 'nagotiator',
+   'engineer' => 'engineer','marketer'=>'marketer'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
+
+    </div>
+    <div class="form-group">
+      {{ Form::label('activetime','*activetime:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::text('activetime',null,['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
+
     </div>
   <div class="form-group">
       {{ Form::label('language','languages:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->

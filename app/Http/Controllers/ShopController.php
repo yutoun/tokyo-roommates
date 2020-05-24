@@ -18,14 +18,21 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
+      $query = Shop::query();
+
       $area=$request->input('area');
       $age=$request->input('age');
       $room=$request->input('room');
       $languages=$request->input('languages');
       $gender=$request->input('gender');
+      $characters=$request->input('characters');
 
-      if(!empty($area)){
+        if(!empty($area)){
           $shops = Shop::where('adress','like','%'.$area.'%')->get();
+          $categories=Category::all()->pluck('name','id');
+        }
+        if(!empty($characters)){
+          $shops = Shop::where('characters','like','%'.$area.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
         if(!empty($age)){
@@ -41,16 +48,16 @@ class ShopController extends Controller
           $categories=Category::all()->pluck('name','id');
         }
         if(!empty($gender)){
-
           $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
-        if(empty($request)){
+        if($request->input()==null){
+          // var_dump($request->input('room'));
           $shops = Shop::all();
           $categories=Category::all()->pluck('name','id');
         }
+        return view('index',['shops'=>$shops,'categories'=>$categories,'request'=>$request]);
 
-        return view('index',['shops'=>$shops,'categories'=>$categories]);
     }
 
     /**
@@ -79,9 +86,13 @@ class ShopController extends Controller
         $shop->years = request('years');
         $shop->adress = request('adress');
         $shop->language = request('language');
+        $shop->characters = request('characters');
         $shop->content = request('content');
         $shop->category_id  = request('category_id');
+        $shop->job = request('job');
+        $shop->activetime = request('activetime');
         $shop->room  = request('room');
+        $shop->fb  = request('fb');
         $shop->user_id = $user->id;//ログインしているユーザーのidを入れる。これまではidを指定してそのidのメンバーの名前を出していた
 
         if($request->file('photo')==null){
@@ -150,6 +161,10 @@ class ShopController extends Controller
       $shop->content = request('content');
       $shop->category_id  = request('category_id');
       $shop->room  = request('room');
+      $shop->characters = request('characters');
+      $shop->fb  = request('fb');
+      $shop->job = request('job');
+      $shop->activetime = request('activetime');
 
       if($request->file('photo')==null){
         $shop->save();

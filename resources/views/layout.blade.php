@@ -6,8 +6,9 @@
     <meta name='csrf-token' content='{{ csrf_token() }}'>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' >
     <title>Tokyo Roommates</title>
-
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src='{{ asset("js/app.js") }}' defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <nav class="navbar-expand-md navbar-dark bg-dark fixed-top">
