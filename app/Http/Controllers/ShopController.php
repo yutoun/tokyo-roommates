@@ -51,10 +51,6 @@ class ShopController extends Controller
           $categories=Category::all()->pluck('name','id');
         }
         if(!empty($gender)){
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
           $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
