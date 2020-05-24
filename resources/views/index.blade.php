@@ -98,7 +98,7 @@ p{
   display: flex;
 }
 </style>
-
+<div id='app'>
 <div class="body">
   @auth<!-- これはログインという行動をもし完了していたら表示する物。authifとは違う -->
     <div class="newbtn">
@@ -146,7 +146,7 @@ p{
     @endforeach
   </div>
 </div>
-
+</div>
 
 
 @endsection
