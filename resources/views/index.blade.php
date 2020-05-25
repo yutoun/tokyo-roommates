@@ -104,7 +104,7 @@ p{
     <div class="newbtn">
       <a href={{ route('shop.new') }} class="btn btn-outline-primary mt-2">add your info</a>
     </div>
-
+  @endauth
   <div class="search mt-5">
     @include('searchGender')
   </div>
@@ -113,7 +113,6 @@ p{
     <p class="border text-light rounded bg-success">{{$request->languages}}</p>
     <p class="border text-light rounded bg-success">{{$request->area}}</p>
   </div>
-  @endauth
 
   <div class="infos">
     @foreach($shops as $shop)
