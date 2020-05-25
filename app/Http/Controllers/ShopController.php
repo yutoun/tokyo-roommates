@@ -52,7 +52,7 @@ class ShopController extends Controller
           // var_dump($request->input('room'));
           $shops = Shop::all();
         }
-        return view('index',['shops'=>$shops,'categories'=>$categories,'request'=>$request]);
+        return view('index',['shops'=>$shops, 'request'=>$request]);
 
     }
 
