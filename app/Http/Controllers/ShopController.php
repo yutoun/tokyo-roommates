@@ -53,7 +53,6 @@ class ShopController extends Controller
           $shops = Shop::all();
         }
         return view('index',['shops'=>$shops, 'request'=>$request]);
-
     }
 
     /**
