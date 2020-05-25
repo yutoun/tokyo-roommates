@@ -24,41 +24,33 @@ class ShopController extends Controller
       $age=$request->input('age');
       $room=$request->input('room');
       $languages=$request->input('languages');
-      $gender=$request->input('gender');
+      $sex=$request->input('sex');
       $characters=$request->input('characters');
 
         if(!empty($area)){
           $shops = Shop::where('adress','like','%'.$area.'%')->get();
-          $categories=Category::all()->pluck('name','id');
         }
         if(!empty($characters)){
           $shops = Shop::where('characters','like','%'.$area.'%')->get();
-          $categories=Category::all()->pluck('name','id');
         }
         if(!empty($area)){
           $shops = Shop::where('adress','like','%'.$area.'%')->get();
-          $categories=Category::all()->pluck('name','id');
         }
         if(!empty($age)){
           $shops = Shop::where('years','like',$age)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
-          $categories=Category::all()->pluck('name','id');
         }
         if(!empty($room)){
           $shops = Shop::where('room','like',$room)->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
-          $categories=Category::all()->pluck('name','id');
         }
         if(!empty($languages)){
           $shops = Shop::where('language','like','%'.$languages.'%')->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
-          $categories=Category::all()->pluck('name','id');
         }
         if(!empty($gender)){
           $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
-          $categories=Category::all()->pluck('name','id');
         }
         if($request->input()==null){
           // var_dump($request->input('room'));
           $shops = Shop::all();
-          $categories=Category::all()->pluck('name','id');
         }
         return view('index',['shops'=>$shops,'categories'=>$categories,'request'=>$request]);
 
@@ -92,7 +84,6 @@ class ShopController extends Controller
         $shop->language = request('language');
         $shop->characters = request('characters');
         $shop->content = request('content');
-        $shop->category_id  = request('category_id');
         $shop->job = request('job');
         $shop->activetime = request('activetime');
         $shop->room  = request('room');
@@ -164,7 +155,6 @@ class ShopController extends Controller
       $shop->adress = request('adress');
       $shop->language = request('language');
       $shop->content = request('content');
-      $shop->category_id  = request('category_id');
       $shop->room  = request('room');
       $shop->characters = request('characters');
       $shop->fb  = request('fb');
