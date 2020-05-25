@@ -35,6 +35,7 @@
             <a class="btn btn-secondary" href={{ route('shop.list') }}>clear</a>
           </div>
           {{ Form::close() }}
+          <p>aaaa</p>
 </p>
       </div>
     </div>
