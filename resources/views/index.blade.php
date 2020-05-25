@@ -138,6 +138,7 @@ p{
             <p class="border text-light rounded bg-success">{{ $shop->language }}</p>
             <p class="border text-light rounded bg-success">{{ $shop->room }}</p>
             <p class="border-bottom border-dark time">{{ $shop->created_at }}</p>
+            <p class="border-bottom border-dark time">{{ $shop->sex }}</p>
 
           </div>
         </div>

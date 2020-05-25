@@ -23,6 +23,7 @@
         <p>{{ $shop->user->name }}</p>
         <p>{{ $shop->created_at }}</p>
         <p>{{ $shop->adress }}</p>
+        <p>{{ $shop->sex }}</p>
         <p>{{ $shop->category->name }}</p>
         <p>{{ $shop->years }}</p>
         <p>{{ $shop->room }}</p>

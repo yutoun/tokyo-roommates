@@ -87,7 +87,6 @@ class ShopController extends Controller
         $user = \Auth::user();//ログインしているユーザーの情報を取り出している
 
         $shop->name = request('name');
-        $shop->years = request('years');
         $shop->adress = request('adress');
         $shop->language = request('language');
         $shop->characters = request('characters');
@@ -97,6 +96,7 @@ class ShopController extends Controller
         $shop->activetime = request('activetime');
         $shop->room  = request('room');
         $shop->fb  = request('fb');
+        $shop->sex  = request('sex');
         $shop->user_id = $user->id;//ログインしているユーザーのidを入れる。これまではidを指定してそのidのメンバーの名前を出していた
 
         if($request->file('photo')==null){
@@ -159,8 +159,8 @@ class ShopController extends Controller
       $shop = Shop::find($id);
 
       $shop->name = request('name');//request->input()tと同意技
-      $shop->years = request('years');
       $shop->adress = request('adress');
+      $shop->sex  = request('sex');
       $shop->language = request('language');
       $shop->content = request('content');
       $shop->category_id  = request('category_id');

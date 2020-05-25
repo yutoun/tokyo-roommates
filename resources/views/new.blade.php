@@ -32,7 +32,10 @@
     <div class="form-group">
       {{ Form::label('characters','*character:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::select('characters',['partyppl' => 'party ppl','quiet' => 'quiet','normal'=>'normal'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
-
+    </div>
+    <div class="form-group">
+      {{ Form::label('sex','*sex:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::select('sex',['man' => 'man','woman' => 'woman','no gender'=>'no gender'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
     </div>
     <div class="form-group">
       {{ Form::label('job','*job:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
