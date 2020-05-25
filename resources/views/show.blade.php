@@ -2,7 +2,7 @@
 @section('content')
     <h1 class="pt-5">{{ $shop->user->name }}</h1>
     <div class="show-titleContent mb-3">
-      <img src="/storage/aa.png ?>" class="img">
+      <img src="/storage/<?php echo $shop->picname; ?>" class="img">
       <div class="show-title">
         <!-- <p>pic:</p> -->
         <p class="name">username:</p>
@@ -24,6 +24,7 @@
         <p>{{ $shop->created_at }}</p>
         <p>{{ $shop->adress }}</p>
         <p>{{ $shop->sex }}</p>
+        <p>{{ $shop->category->name }}</p>
         <p>{{ $shop->years }}</p>
         <p>{{ $shop->room }}</p>
         <p>{{ $shop->language }}</p>
