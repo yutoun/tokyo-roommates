@@ -89,12 +89,14 @@ class ShopController extends Controller
         $shop->fb  = request('fb');
         $shop->sex  = request('sex');
         $shop->user_id = $user->id;//ログインしているユーザーのidを入れる。これまではidを指定してそのidのメンバーの名前を出していた
-
+        dd($request->all());
+        
         if($request->file('photo')==null){
           $shop->picname = '';
           $shop->save();
           return redirect()->route('shop.detail',['id' => $shop->id]);// showに遷移するときはもちろん毎回idを渡す必要があるindex.phpの中のコードも同じ
         }else{
+
           $file_name = $request->file('photo')->getClientOriginalName();
           $shop->picname = $file_name;
           // 上のddで見てみるとgetclient~~でファイル名が記載されてることがわかる。filenameにファイル名を入れてその名前で名前をつけて保存する
