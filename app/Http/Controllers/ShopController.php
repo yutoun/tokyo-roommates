@@ -24,7 +24,7 @@ class ShopController extends Controller
       $age=$request->input('age');
       $room=$request->input('room');
       $languages=$request->input('languages');
-      $sex=$request->input('sex');
+      $gender=$request->input('gender');
       $characters=$request->input('characters');
 
         if(!empty($area)){
@@ -52,7 +52,7 @@ class ShopController extends Controller
           $categories=Category::all()->pluck('name','id');
         }
         if(!empty($gender)){
-          $shops = Shop::where('sex','like','%'.$sex.'%')->get();
+          $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
         if($request->input()==null){
@@ -87,10 +87,12 @@ class ShopController extends Controller
         $user = \Auth::user();//ログインしているユーザーの情報を取り出している
 
         $shop->name = request('name');
+        $shop->years = request('years');
         $shop->adress = request('adress');
         $shop->language = request('language');
         $shop->characters = request('characters');
         $shop->content = request('content');
+        $shop->category_id  = request('category_id');
         $shop->job = request('job');
         $shop->activetime = request('activetime');
         $shop->room  = request('room');
@@ -158,8 +160,8 @@ class ShopController extends Controller
       $shop = Shop::find($id);
 
       $shop->name = request('name');//request->input()tと同意技
+      $shop->years = request('years');
       $shop->adress = request('adress');
-      $shop->sex  = request('sex');
       $shop->language = request('language');
       $shop->content = request('content');
       $shop->category_id  = request('category_id');
