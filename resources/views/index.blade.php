@@ -133,7 +133,7 @@ p{
           </div>
           <div class="right-bottom">
             <p class="border text-light rounded bg-success">{{ $shop->adress }}</p>
-            <p class="border text-light rounded bg-success category_name">{{ $shop->category->name }}</p> <!-- shop.phpのカテゴリーメソッドにいく -->
+            <p class="border text-light rounded bg-success category_name">{{ $shop->sex}}</p> <!-- shop.phpのカテゴリーメソッドにいく -->
             <p class="border text-light rounded bg-success">{{ $shop->years }}</p>
             <p class="border text-light rounded bg-success">{{ $shop->language }}</p>
             <p class="border text-light rounded bg-success">{{ $shop->room }}</p>
