@@ -106,7 +106,7 @@ p{
     </div>
   @endauth
   <div class="search mt-5">
-    @include('searchGender')
+    @include('searcharea')
   </div>
   <div class="results">
     <p class="border text-light rounded bg-success">{{$request->room}}</p>
