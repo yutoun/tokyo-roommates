@@ -10,21 +10,12 @@
       {{ Form::label('fb','*your FB url:',['class'=>'newinfotitle']) }}
       {{ Form::text('fb',null,['class'=>'info-city']) }}
     </div>
-    <div class="form-group">
-      {{ Form::label('category_id','*gender:',['class'=>'newinfotitle']) }}
-      {{ Form::select('category_id',$categories,['class'=>'info']) }}
-      <!-- $categoriesには(name,id)が入っていて、引数１が表示されるもの、引数２がvalueになるようになっている。だからcategory_idには$categoriesのidが送られる -->
-    </div>
     <?php
     $arr=[];
     for ($i=0; $i<100; $i++) {
       $arr[]=$i;
     }
     ?>
-    <div class="form-group">
-      {{ Form::label('years','*age:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
-      {{ Form::select('years',[$arr],['class'=>'info-years']) }}
-    </div>
     <div class="form-group">
       {{ Form::label('room','*with room or not:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::select('room',['with room' => 'with room','without room' => 'without room'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->

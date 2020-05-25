@@ -24,7 +24,7 @@ class ShopController extends Controller
       $age=$request->input('age');
       $room=$request->input('room');
       $languages=$request->input('languages');
-      $gender=$request->input('gender');
+      $sex=$request->input('sex');
       $characters=$request->input('characters');
 
         if(!empty($area)){
@@ -52,7 +52,7 @@ class ShopController extends Controller
           $categories=Category::all()->pluck('name','id');
         }
         if(!empty($gender)){
-          $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
+          $shops = Shop::where('sex','like','%'.$sex.'%')->get();
           $categories=Category::all()->pluck('name','id');
         }
         if($request->input()==null){
@@ -91,7 +91,6 @@ class ShopController extends Controller
         $shop->language = request('language');
         $shop->characters = request('characters');
         $shop->content = request('content');
-        $shop->category_id  = request('category_id');
         $shop->job = request('job');
         $shop->activetime = request('activetime');
         $shop->room  = request('room');
