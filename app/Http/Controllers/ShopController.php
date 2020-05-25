@@ -90,7 +90,7 @@ class ShopController extends Controller
         $shop->sex  = request('sex');
         $shop->user_id = $user->id;//ログインしているユーザーのidを入れる。これまではidを指定してそのidのメンバーの名前を出していた
         dd($request->all());
-        
+
         if($request->file('photo')==null){
           $shop->picname = '';
           $shop->save();
@@ -161,7 +161,8 @@ class ShopController extends Controller
       $shop->fb  = request('fb');
       $shop->job = request('job');
       $shop->activetime = request('activetime');
-
+      dd($request->all());
+      
       if($request->file('photo')==null){
         $shop->save();
         return redirect()->route('shop.detail',['id' => $shop->id]);
