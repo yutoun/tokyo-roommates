@@ -45,9 +45,7 @@ class ShopController extends Controller
         if(!empty($languages)){
           $shops = Shop::where('language','like','%'.$languages.'%')->get();//３つ並行でifおいても最初の物が体とelseでshop::allで検索かかるからダメ
         }
-        if(!empty($gender)){
-          $shops = Shop::where('category_id','like','%'.$gender.'%')->get();
-        }
+
         if($request->input()==null){
           // var_dump($request->input('room'));
           $shops = Shop::all();
@@ -89,7 +87,7 @@ class ShopController extends Controller
         $shop->fb  = request('fb');
         $shop->sex  = request('sex');
         $shop->user_id = $user->id;//ログインしているユーザーのidを入れる。これまではidを指定してそのidのメンバーの名前を出していた
-        dd($request->all());
+        // dd($request->all());
 
         if($request->file('photo')==null){
           $shop->picname = '';
@@ -187,5 +185,17 @@ class ShopController extends Controller
         $shop=Shop::find($id);
         $shop->delete();
         return redirect('/shops');
+    }
+    public function upload(Request $request){
+      $file = $request->file('file');
+      // 第一引数はディレクトリの指定
+      // 第二引数はファイル
+      // 第三引数はpublickを指定することで、URLによるアクセスが可能となる
+      $path = Storage::disk('s3')->putFile('/', $file, 'public');
+      // hogeディレクトリにアップロード
+      // $path = Storage::disk('s3')->putFile('/hoge', $file, 'public');
+      // ファイル名を指定する場合はputFileAsを利用する
+      // $path = Storage::disk('s3')->putFileAs('/', $file, 'hoge.jpg', 'public');
+      return redirect('/');
     }
 }

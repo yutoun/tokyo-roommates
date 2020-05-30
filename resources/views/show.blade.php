@@ -3,7 +3,6 @@
     <h1 class="pt-5">{{ $shop->user->name }}</h1>
     <div class="show-titleContent mb-3">
       <img src="/storage/<?php echo $shop->picname; ?>" class="img">
-      <?php echo $shop->picname; ?>
       <div class="show-title">
         <!-- <p>pic:</p> -->
         <p class="name">username:</p>

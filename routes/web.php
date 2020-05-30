@@ -18,9 +18,12 @@ Route::get('/', function () {
 });
 Route::get('/shops','ShopController@index')->name('shop.list');
 Route::get('/shop/new','ShopController@create')->name('shop.new');
+Route::get('/post','PostsController@add')->name('post.add');
+Route::get('/post/create','PostsController@create')->name('post.new');
 Route::get('/shop/edit/{id}','ShopController@edit')->name('shop.edit');
 Route::post('/shop/update/{id}','ShopController@update')->name('shop.update');
 Route::post('/shop','ShopController@store')->name('shop.store');
+Route::post('/shop/upload','ShopController@upload')->name('shop.upload');
 
 Route::get('/shop/{id}','ShopController@show')->name('shop.detail');
 // この{id}がshowメソッドの引数になる。そしてこの{{id}}はindexで送られてくる。id空かstringだとエラーになるからあとでルーティングしないといけなかった

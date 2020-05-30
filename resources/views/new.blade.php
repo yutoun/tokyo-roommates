@@ -17,6 +17,10 @@
     }
     ?>
     <div class="form-group">
+      {{ Form::label('years','age:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::select('years',[$arr],['class'=>'info-years']) }}
+    </div>
+    <div class="form-group">
       {{ Form::label('room','*with room or not:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
       {{ Form::select('room',['with room' => 'with room','without room' => 'without room'],['class'=>'info-years']) }}<!-- 一個目がvalue,2個目が表示 -->
     </div>
@@ -59,6 +63,12 @@
     </div>
   {{ Form::close() }}
   <a class="home btn btn-success" href={{ route('shop.list') }}>HOME</a>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    {{Form::open(['route'=>'shop.upload',"enctype"=>"multipart/form-data"]) }}
+    {{ csrf_field() }}
+    <input type="file" name="file">
+    <button type="submit">保存</button>
+    {{ Form::close() }}
 @endsection
 <style >
   .info{
