@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 Route::get('/shops','ShopController@index')->name('shop.list');
 Route::get('/shop/new','ShopController@create')->name('shop.new');
-Route::get('/post','PostsController@add')->name('post.add');
-Route::get('/post/create','PostsController@create')->name('post.new');
+Route::match(['get', 'post'], '/post','PostsController@add')->name('post.add');
+Route::match(['get', 'post'], '/post/create','PostsController@create')->name('post.new');
 Route::get('/shop/edit/{id}','ShopController@edit')->name('shop.edit');
 Route::post('/shop/update/{id}','ShopController@update')->name('shop.update');
 Route::post('/shop','ShopController@store')->name('shop.store');

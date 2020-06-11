@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Storage;
 use App\Shop;
 use App\Category;
+use App\Post;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -18,6 +19,7 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
+      $posts = Post::all();
 
       // $query = Shop::query();
       $area=$request->input('area');
@@ -50,7 +52,7 @@ class ShopController extends Controller
           // var_dump($request->input('room'));
           $shops = Shop::all();
         }
-        return view('index',['shops'=>$shops, 'request'=>$request]);
+        return view('index',['shops'=>$shops, 'request'=>$request,'posts' => $posts]);
     }
 
     /**
@@ -72,8 +74,15 @@ class ShopController extends Controller
      */
     public function store(Request $request)//form使ったときはデータ送られてるからrequest使う。
     {
+
+
         $shop = new Shop;
         $user = \Auth::user();//ログインしているユーザーの情報を取り出している
+
+        $image = $request->file('images');
+        $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+        // アップロードした画像のフルパスを取得
+        $shop->image_path = Storage::disk('s3')->url($path);
 
         $shop->name = request('name');
         $shop->years = request('years');

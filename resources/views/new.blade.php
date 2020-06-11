@@ -55,20 +55,15 @@
       {{ Form::textarea('content',null,['class'=>'info']) }}
     </div>
     <div class="form-group">
-      {{ Form::label('photo','*photo:',['class'=>'newinfotitle']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
-      {{ Form::file('photo',null,['class'=>'info-language']) }}
+      {{ Form::label('images','*image:',['class'=>'newinfotitle content-top']) }}<!-- 第一引数はshopのデータ持ってきてるんじゃなくてここで定義した物をstoreに入れる用 -->
+      {{ Form::file('images',null,['class'=>'info']) }}
     </div>
     <div class="form-group">
       {{ Form::submit('submit',['class'=>'btn btn-primary col-2']) }}
     </div>
   {{ Form::close() }}
   <a class="home btn btn-success" href={{ route('shop.list') }}>HOME</a>
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    {{Form::open(['route'=>'shop.upload',"enctype"=>"multipart/form-data"]) }}
-    {{ csrf_field() }}
-    <input type="file" name="file">
-    <button type="submit">保存</button>
-    {{ Form::close() }}
+
 @endsection
 <style >
   .info{

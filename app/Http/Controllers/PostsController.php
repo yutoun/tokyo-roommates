@@ -16,9 +16,9 @@ class PostsController extends Controller
   {
       $post = new Post;
       $form = $request->all();
-
       //s3アップロード開始
       $image = $request->file('image');
+      var_dump($image);
       // バケットの`myprefix`フォルダへアップロード
       $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
       // アップロードした画像のフルパスを取得
@@ -26,6 +26,10 @@ class PostsController extends Controller
 
       $post->save();
 
-      return redirect('posts/create');
+      return redirect('/');
+  }
+  public function index(Request $request){
+    $posts = Post::all();
+    return view('shop.index', ['posts' => $posts]);
   }
 }

@@ -97,6 +97,10 @@ p{
 .lan{
   display: flex;
 }
+.s3image{
+  height: 130px;
+  width: 200px;
+}
 </style>
 <div id='app'>
 <div class="body">
@@ -118,7 +122,7 @@ p{
     @foreach($shops as $shop)
       <div class="content">
         <div class="left">
-          <img src="/storage/<?php echo $shop->picname; ?>" class="img">
+          <img src={{ $shop->image_path }} class="img">
         </div>
         <div class="right">
           <div class="right-top">
@@ -142,7 +146,9 @@ p{
         </div>
 
       </div>
-    @endforeach
+      @endforeach
+      
+
   </div>
 </div>
 </div>
